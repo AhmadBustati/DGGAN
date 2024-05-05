@@ -1,4 +1,6 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_eager_execution()
+
 
 
 class Discriminator():
@@ -16,7 +18,7 @@ class Discriminator():
         else:
             self.node_embedding_matrix = tf.get_variable(name = 'dis_node_embedding',
                                                          shape = [2, self.n_node, self.emd_dim],
-                                                         initializer = tf.contrib.layers.xavier_initializer(uniform = False),
+                                                         initializer = tf.keras.initializers.glorot_normal(),
                                                          trainable = True)
 
         self.pos_node_ids = tf.placeholder(tf.int32, shape = [None])
