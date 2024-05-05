@@ -1,4 +1,5 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_eager_execution()
 
 
 class Generator():
@@ -16,24 +17,24 @@ class Generator():
         else:
             self.node_embedding_matrix = tf.get_variable(name = 'gen_node_embedding',
                                                        shape = [self.n_node, self.emd_dim],
-                                                       initializer = tf.contrib.layers.xavier_initializer(uniform = False),
+                                                       initializer = tf.keras.initializers.glorot_normal(),
                                                        trainable = True)
 
         self.gen_w_1 = tf.get_variable(name = 'gen_w',
                                        shape = [2, self.emd_dim, self.emd_dim],
-                                       initializer = tf.contrib.layers.xavier_initializer(uniform = False),
+                                       initializer = tf.keras.initializers.glorot_normal(),
                                        trainable = True)
         self.gen_b_1 = tf.get_variable(name = 'gen_b',
                                        shape = [2, self.emd_dim],
-                                       initializer = tf.contrib.layers.xavier_initializer(uniform = False),
+                                       initializer = tf.keras.initializers.glorot_normal(),
                                        trainable = True)
         self.gen_w_2 = tf.get_variable(name = 'gen_w_2',
                                        shape = [2, self.emd_dim, self.emd_dim],
-                                       initializer = tf.contrib.layers.xavier_initializer(uniform = False),
+                                       initializer = tf.keras.initializers.glorot_normal(),
                                        trainable = True)
         self.gen_b_2 = tf.get_variable(name = 'gen_b_2',
                                        shape = [2, self.emd_dim],
-                                       initializer = tf.contrib.layers.xavier_initializer(uniform = False),
+                                       initializer = tf.keras.initializers.glorot_normal(),
                                        trainable = True)
 
         self.node_ids = tf.placeholder(tf.int32, shape = [None])
