@@ -20,3 +20,4 @@ https://arxiv.org/abs/2008.03667
 cd code
 python dggan.py
 ```
+This fork updates the code so that it's compatiable with tensorflow v2
